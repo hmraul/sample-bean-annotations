@@ -2,6 +2,7 @@ package com.rhm.samplebean.configuration;
 
 import com.rhm.samplebean.domain.entities.Circle;
 import com.rhm.samplebean.domain.entities.Shape;
+import com.rhm.samplebean.domain.entities.ShapeFactory;
 import com.rhm.samplebean.domain.entities.Square;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,11 @@ public class ShapesConfiguration {
     @Bean(name = "circle")
     public Shape circle() {
         return new Circle();
+    }
+
+    @Bean
+    public ShapeFactory shapeFactory(Shape square, Shape circle) {
+        return new ShapeFactory(square, circle);
     }
 
 }
